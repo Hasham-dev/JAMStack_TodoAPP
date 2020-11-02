@@ -36,4 +36,4 @@ This starter is meant as a minimal reproduction of a Gatsby project in order to 
     Your site is now running at `http://localhost:8000`!
 
 
-Site URL: 
+Site URL: hv-jamstack-todos
