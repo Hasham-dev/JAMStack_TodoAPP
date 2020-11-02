@@ -34,3 +34,6 @@ This starter is meant as a minimal reproduction of a Gatsby project in order to 
 3.  **Open the code and start customizing!**
 
     Your site is now running at `http://localhost:8000`!
+
+
+Site URL: 
