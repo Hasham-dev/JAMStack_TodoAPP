@@ -23,7 +23,7 @@ const ADD_TODO = gql`
 const deleteTodo = gql`
   mutation deleteTask($id: ID!) {
     deleteTask(id: $id) {
-        taskD
+        task
     }
   }
 `;
@@ -47,7 +47,7 @@ export default function Home() {
         console.log(JSON.stringify(id));
         deleteTask({
             variables: {
-                id: id,
+                task
             },
             refetchQueries: [{ query: GET_TODOS }],
         });
