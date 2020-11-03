@@ -47,7 +47,7 @@ export default function Home() {
         console.log(JSON.stringify(id));
         deleteTask({
             variables: {
-                task
+                id: id,
             },
             refetchQueries: [{ query: GET_TODOS }],
         });
