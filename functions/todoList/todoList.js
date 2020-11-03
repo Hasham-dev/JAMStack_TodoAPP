@@ -73,8 +73,6 @@ const resolvers = {
     },
     deleteTask: async (_, { id }) => {
       try {
-        // const reqId = JSON.stringify(id);
-        // const reqId2 = JSON.parse(id);
         console.log(id);
         var adminClient = new faunadb.Client({ secret: 'fnAD5rID0MACBTs47TwGR8D1Itfdj3cyo79VVDWD' });
         const result = await adminClient.query(
