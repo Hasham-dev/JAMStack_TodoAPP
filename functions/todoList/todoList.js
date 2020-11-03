@@ -8,6 +8,8 @@ const typeDefs = gql`
   }
   type Mutation {
     addTodo(task: String!): Todo
+    deleteTask(id: ID!): Todo
+
   }
   type Todo {
     id: ID!
@@ -40,6 +42,7 @@ const resolvers = {
       }
       catch (err) {
         console.log(err)
+        return err.toString();
       }
     }
     // authorByName: (root, args, context) => {
@@ -70,19 +73,19 @@ const resolvers = {
     },
     deleteTask: async (_, { id }) => {
       try {
-        const reqId = JSON.stringify(id);
-        const reqId2 = JSON.parse(id);
+        // const reqId = JSON.stringify(id);
+        // const reqId2 = JSON.parse(id);
         console.log(id);
-
-        const result = await client.query(
-          q.Delete(q.Ref(q.Collection("tasks"), id))
+        var adminClient = new faunadb.Client({ secret: 'fnAD5rID0MACBTs47TwGR8D1Itfdj3cyo79VVDWD' });
+        const result = await adminClient.query(
+          q.Delete(q.Ref(q.Collection("todos"), id))
         );
         console.log(result);
-        return result.data;
+        return result.ref.data;
       } catch (error) {
-        return error;
+        return error.toString();
       }
-    }
+    },
   }
 }
 
