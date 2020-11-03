@@ -20,11 +20,27 @@ const ADD_TODO = gql`
         }
     }
 `
-
+const deleteTodo = gql`
+  mutation deleteTask($id: ID!) {
+    deleteTask(id: $id) {
+      text
+    }
+  }
+`;
 export default function Home() {
     let inputText;
 
     const [addTodo] = useMutation(ADD_TODO);
+    const [deleteTask] = useMutation(deleteTodo);
+    const handleDelete = (id) => {
+        console.log(JSON.stringify(id));
+        deleteTask({
+            variables: {
+                id: id,
+            },
+            refetchQueries: [{ query: getTodos }],
+        });
+    };
     const addTask = () => {
         addTodo({
             variables: {
@@ -48,7 +64,7 @@ export default function Home() {
     return (
         <div className="container">
             <label>
-                <h1> Add Task </h1> 
+                <h1> Add Task </h1>
                 <input type="text" ref={node => {
                     inputText = node;
                 }} />
@@ -74,6 +90,7 @@ export default function Home() {
                             <td> {todo.id} </td>
                             <td> {todo.task} </td>
                             <td> {todo.status.toString()} </td>
+                            <button onClick={() => handleDelete(task.id)}>Delete</button>
                         </tr>
                     })}
                 </tbody>

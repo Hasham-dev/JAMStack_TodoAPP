@@ -67,6 +67,21 @@ const resolvers = {
       catch (err) {
         console.log(err)
       }
+    },
+    deleteTask: async (_, { id }) => {
+      try {
+        const reqId = JSON.stringify(id);
+        const reqId2 = JSON.parse(id);
+        console.log(id);
+
+        const result = await client.query(
+          q.Delete(q.Ref(q.Collection("tasks"), id))
+        );
+        console.log(result);
+        return result.data;
+      } catch (error) {
+        return error;
+      }
     }
   }
 }
