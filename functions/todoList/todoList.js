@@ -65,7 +65,7 @@ const resolvers = {
             },
           )
         )
-        return result.ref.data;
+        return result.data;
       }
       catch (err) {
         console.log(err)
