@@ -76,10 +76,10 @@ const resolvers = {
         console.log(id);
         var adminClient = new faunadb.Client({ secret: 'fnAD5rID0MACBTs47TwGR8D1Itfdj3cyo79VVDWD' });
         const result = await adminClient.query(
-          q.Delete(q.Ref(q.Collection("todos"), id))
+          q.Delete(q.Ref(q.Collection("todos"), `${id}`)))
         );
         console.log(result);
-        return result.ref.data;
+        return result.ref.id;
       } catch (error) {
         return error.toString();
       }
