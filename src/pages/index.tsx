@@ -22,7 +22,9 @@ const ADD_TODO = gql`
 `
 const deleteTodo = gql`
   mutation deleteTask($id: ID!) {
-    deleteTask(id: $id) 
+    deleteTask(id: $id) {
+    id
+}
   }
 `;
 export default function Home() {
