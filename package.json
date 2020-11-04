@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
+    "develop": "cross-env GATSBY_GRAPHQL_IDE=playground gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "clean": "gatsby clean"
@@ -24,5 +24,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
   }
 }

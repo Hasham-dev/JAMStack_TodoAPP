@@ -20,10 +20,19 @@ const ADD_TODO = gql`
         }
     }
 `
+<<<<<<< Updated upstream
 const DELETE= gql`
   mutation deleteTask($id: ID!) {
     deleteTask(id: $id) 
   }
+=======
+const deleteTodo = gql`
+    mutation deleteTask($id: ID!) {
+        deleteTask(id: $id) {
+            task
+        }
+    }
+>>>>>>> Stashed changes
 `;
 export default function Home() {
     let inputText;
@@ -90,7 +99,7 @@ export default function Home() {
                             <td> {todo.id} </td>
                             <td> {todo.task} </td>
                             <td> {todo.status.toString()} </td>
-                            <button onClick={() => handleDelete(todo.id)}>Delete</button>
+                            <td onClick={() => handleDelete(todo.id)}>Delete</td>
                         </tr>
                     })}
                 </tbody>
