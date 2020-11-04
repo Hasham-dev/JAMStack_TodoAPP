@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react"
 import { useQuery, useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import "./style.css";
+import Navbar from "../components/NavBar";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import TaskList from "../components/TaskList";
+import Container from '@material-ui/core/Container';
 
 // This query is executed at run time by Apollo.
 const GET_TODOS = gql`
@@ -20,19 +25,10 @@ const ADD_TODO = gql`
         }
     }
 `
-<<<<<<< Updated upstream
-const DELETE= gql`
+const DELETE = gql`
   mutation deleteTask($id: ID!) {
     deleteTask(id: $id) 
   }
-=======
-const deleteTodo = gql`
-    mutation deleteTask($id: ID!) {
-        deleteTask(id: $id) {
-            task
-        }
-    }
->>>>>>> Stashed changes
 `;
 export default function Home() {
     let inputText;
@@ -40,7 +36,7 @@ export default function Home() {
 
     const [addTodo] = useMutation(ADD_TODO);
 
-    
+
     const addTask = () => {
         addTodo({
             variables: {
@@ -70,42 +66,39 @@ export default function Home() {
         return <h2>Error</h2>
     }
 
-    return (
-        <div className="container">
+    return (<div>
+
+            <Navbar />
+        <Container maxWidth="sm" className="container">
+
             <label>
-                <h1> Add Task </h1>
+                <h1> Add Todo </h1>
                 <input type="text" ref={node => {
                     inputText = node;
                 }} />
-            </label>
-            <button onClick={addTask}>Add Task</button>
+            </label><br/>
+            <Button variant="contained" className="Add-Btn" onClick={addTask}>Add Todo</Button>
 
             <br /> <br />
 
-            <h3>My TODO LIST</h3>
+            <h3> TODO LIST</h3>
 
-            <table border="2">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th> TASK </th>
-                        <th> STATUS </th>
-                    </tr>
-                </thead>
-                <tbody>
+            
+                {/* <tbody>
                     {data.todos.map(todo => {
                         console.log(todo)
                         return <tr key={todo.id}>
-                            <td> {todo.id} </td>
-                            <td> {todo.task} </td>
+                        <td> {todo.id} </td>
+                        <td> {todo.task} </td>
                             <td> {todo.status.toString()} </td>
                             <td onClick={() => handleDelete(todo.id)}>Delete</td>
-                        </tr>
-                    })}
-                </tbody>
-            </table>
+                            </tr>
+                    })} */}
+                    <TaskList />
+                {/* </tbody> */}
 
-        </div>
+        </Container>
+    </div>
     );
 
 }

@@ -79,11 +79,7 @@ const resolvers = {
           q.Delete(q.Ref(q.Collection("todos"), id))
         );
         console.log(result);
-<<<<<<< Updated upstream
         return result.ref.id;
-=======
-        return result.data;
->>>>>>> Stashed changes
       } catch (error) {
         return error.toString();
       }

@@ -1,13 +1,35 @@
 .container{
-    width: 75%;
-    max-width: 800px;
     margin: 0 auto;
-    text-align: center;
+    text-align: center !important;
     box-shadow: 0 0 20px #606060;
     padding: 20px 10px;
+    margin-top: 20px;
+    border-radius: 5px;
 }
 
 .container table {
     margin: 0 auto;
     width: 700px;
+}
+.Appbar{
+    background-color: rgba(41, 116, 141, 0.686) !important;
+}
+body,html{
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.Add-Btn{
+    background-color: rgba(41, 116, 141, 0.686) !important;
+margin-top: 10px !important;
+}
+.List{
+    text-align: center !important;
+    align-items: center !important;
+}
+.Delete{
+    left: 0 !important;
+}
+input{
+    padding: 12px;
 }
