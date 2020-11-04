@@ -21,7 +21,7 @@ const ADD_TODO = gql`
     }
 `
 const DELETE= gql`
-  mutation deleteTask($id: String!) {
+  mutation deleteTask($id: ID!) {
     deleteTask(id: $id) 
   }
 `;
