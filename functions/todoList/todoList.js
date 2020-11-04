@@ -8,7 +8,7 @@ const typeDefs = gql`
   }
   type Mutation {
     addTodo(task: String!): Todo
-    deleteTask(id: ID!): Todo
+    deleteTask(id: ID!): String
 
   }
   type Todo {
