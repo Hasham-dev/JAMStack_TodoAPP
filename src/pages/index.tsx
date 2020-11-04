@@ -77,7 +77,7 @@ export default function Home() {
                     inputText = node;
                 }} />
             </label><br/>
-            <Button variant="contained" className="Add-Btn" onClick={addTask}>Add Todo</Button>
+            <Button variant="contained" style={{color:"white"}} className="Add-Btn" onClick={addTask}>Add Todo</Button>
 
             <br /> <br />
 

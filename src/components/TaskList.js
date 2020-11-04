@@ -62,10 +62,9 @@ export default function TaskList() {
         return (
 
           <ListItem  role={undefined} dense button  className="List">
-            <ListItemIcon className={todo.id}>
+            <ListItemIcon key={todo.id}>
               <Checkbox
                 edge="start"
-                
                 tabIndex={-1}
                 disableRipple
                 
@@ -74,7 +73,7 @@ export default function TaskList() {
             <ListItemText id={todo.task} primary={todo.task} />
             <ListItemSecondaryAction>
               <IconButton edge="end" aria-label="comments" className="Delete">
-                <DeleteIcon onClick={() => handleDelete(todo.id)} />
+                <DeleteIcon color="pink" onClick={() => handleDelete(todo.id)} />
               </IconButton>
             </ListItemSecondaryAction>
           </ListItem>
