@@ -81,7 +81,7 @@ const resolvers = {
           q.Delete(q.Ref(q.Collection("todos"), id))
         );
         console.log(result);
-        return result.data;
+        return result.ref.data;
       } catch (error) {
         return error.toString();
       }
