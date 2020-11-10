@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -21,28 +21,20 @@ const GET_TODOS = gql`
 }
 `;
 
-const DELETE = gql`
+const deleteTodo = gql`
   mutation deleteTask($id: ID!) {
-    deleteTask(id: $id) 
+    deleteTask(id: $id) {
+      id
+    }
   }
 `;
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    alignItems: "center",
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
+
 
 export default function TaskList() {
-  const [deleteTask] = useMutation(DELETE);
-
-  const classes = useStyles();
-  const [checked, setChecked] = React.useState([0]);
+  const [deleteTask] = useMutation(deleteTodo);
 
   const handleDelete = (id) => {
-    console.log(JSON.stringify(id));
+    console.log(JSON.stringify(id))
     deleteTask({
       variables: {
         id: id,
@@ -51,8 +43,11 @@ export default function TaskList() {
     });
   };
 
-  const {data } = useQuery(GET_TODOS);
+  const { loading, error, data } = useQuery(GET_TODOS);
 
+if(loading){
+  return<>Loading...</>
+}
 
 
   return (
@@ -62,7 +57,7 @@ export default function TaskList() {
         return (
 
           <ListItem  role={undefined} dense button  className="List">
-            <ListItemIcon key={todo.id}>
+            <ListItemIcon key={(todo.id)}>
               <Checkbox
                 edge="start"
                 tabIndex={-1}

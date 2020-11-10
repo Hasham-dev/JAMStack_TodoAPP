@@ -34,7 +34,7 @@ const resolvers = {
 
         return result.data.map(d=>{
           return {
-            id: d.ts,
+            id: d.ref.id,
             status: d.data.status,
             task: d.data.task
           }
@@ -73,13 +73,15 @@ const resolvers = {
     },
     deleteTask: async (_, { id }) => {
       try {
+        const reqId = JSON.stringify(id);
+        const reqId2 = JSON.parse(id);
         console.log(id);
         var adminClient = new faunadb.Client({ secret: 'fnAD5rID0MACBTs47TwGR8D1Itfdj3cyo79VVDWD' });
         const result = await adminClient.query(
           q.Delete(q.Ref(q.Collection("todos"), id))
         );
         console.log(result);
-        return result.ref.id;
+        return result.data;
       } catch (error) {
         return error.toString();
       }

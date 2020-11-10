@@ -25,14 +25,9 @@ const ADD_TODO = gql`
         }
     }
 `
-const DELETE = gql`
-  mutation deleteTask($id: ID!) {
-    deleteTask(id: $id) 
-  }
-`;
+
 export default function Home() {
     let inputText;
-    const [deleteTask] = useMutation(DELETE);
 
     const [addTodo] = useMutation(ADD_TODO);
 
